@@ -26,6 +26,7 @@ namespace api_livros.Infrastructure
         private static IServiceCollection AddRepository(this IServiceCollection services)
         {
             services.AddScoped<ILivroRepository, LivroRepository>();
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
             return services;
         }

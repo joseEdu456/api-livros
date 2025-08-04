@@ -11,6 +11,7 @@ namespace api_livros.Infrastructure.Persistence
         }
 
         public DbSet<Livro> Livros { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -22,6 +23,14 @@ namespace api_livros.Infrastructure.Persistence
                 l.Property(l => l.Autor).HasColumnType("VARCHAR(50)");
                 l.Property(l => l.ISBN).HasColumnType("VARCHAR(30)");
                 l.Property(l => l.AnoPublicacao).HasColumnType("SMALLINT");
+            });
+
+            modelBuilder.Entity<Usuario>(u =>
+            {
+                u.HasKey(u => u.Id);
+
+                u.Property(u => u.Nome).HasColumnType("VARCHAR(100)");
+                u.Property(u => u.Email).HasColumnType("VARCHAR(100)");
             });
         }
     }

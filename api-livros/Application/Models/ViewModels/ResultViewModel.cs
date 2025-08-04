@@ -1,4 +1,6 @@
-﻿namespace api_livros.Application.Models.ViewModels
+﻿using Microsoft.VisualBasic;
+
+namespace api_livros.Application.Models.ViewModels
 {
     public class ResultViewModel
     {
@@ -24,7 +26,7 @@
 
     public class ResultViewModel<T> : ResultViewModel
     {
-        public ResultViewModel(T? data, string message = "", bool isSucess = true)
+        public ResultViewModel(T? data, string message = "", bool isSucess = true) : base(message, isSucess)
         {
             Data = data;
         }

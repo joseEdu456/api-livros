@@ -20,6 +20,7 @@ namespace api_livros.Application
         private static IServiceCollection AddServices(this IServiceCollection services)
         {
             services.AddScoped<ILivroService, LivroService>();
+            services.AddScoped<IUsuarioService, UsuarioService>();
 
             return services;
         }

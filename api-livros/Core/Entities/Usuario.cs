@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+﻿using api_livros.Application.Models.InputModels;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace api_livros.Core.Entities
 {
@@ -10,6 +11,12 @@ namespace api_livros.Core.Entities
         {
             Nome = nome;
             Email = email;
+        }
+
+        public void AlterarDados(AlteracaoUsuarioInputModel model)
+        {
+            Nome = model.Nome;
+            Email = model.Email;
         }
         
     }
