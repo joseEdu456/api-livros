@@ -7,10 +7,12 @@ namespace api_livros.Core.Entities
     {
         public string Nome { get; private set; }
         public string Email { get; private set; }
+        public List<Emprestimo> Emprestimos { get; set; }
         public Usuario(string nome, string email)
         {
             Nome = nome;
             Email = email;
+            Emprestimos = [];
         }
 
         public void AlterarDados(AlteracaoUsuarioInputModel model)
