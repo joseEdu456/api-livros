@@ -12,6 +12,7 @@ namespace api_livros.Infrastructure.Persistence
 
         public DbSet<Livro> Livros { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Emprestimo> Emprestimos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -31,6 +32,21 @@ namespace api_livros.Infrastructure.Persistence
 
                 u.Property(u => u.Nome).HasColumnType("VARCHAR(100)");
                 u.Property(u => u.Email).HasColumnType("VARCHAR(100)");
+            });
+
+            modelBuilder.Entity<Emprestimo>(e =>
+            {
+                e.HasKey(e => e.Id);
+
+                e.HasOne(u => u.Usuario)
+                    .WithMany(u => u.Emprestimos)
+                    .HasForeignKey(u => u.IdUsuario)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                e.HasOne(e => e.Livro)
+                    .WithOne(l => l.Emprestimo)
+                    .HasForeignKey<Emprestimo>(e => e.IdLivro)
+                    .OnDelete(DeleteBehavior.Restrict);
             });
         }
     }

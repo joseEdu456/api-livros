@@ -7,6 +7,8 @@
         public string Autor { get; private set; }
         public string ISBN { get; private set; }
         public int AnoPublicacao { get; private set; }
+        public int IdEmprestimo  { get; private set; }
+        public Emprestimo Emprestimo { get; private set; }
         public Livro(string titulo, string autor, string iSBN, int anoPublicacao)
         {
             Titulo = titulo;
